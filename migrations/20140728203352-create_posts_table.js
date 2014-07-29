@@ -13,7 +13,7 @@ module.exports = {
       content: DataTypes.TEXT,
       authorId: {
         type: DataTypes.INTEGER,
-        foriegnKey: true
+        foriegnKey: true // fix spelling (should be'foreign') with another migration
       }
     })
     .complete(done)    
