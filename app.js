@@ -31,11 +31,18 @@ app.get('/blog/new', function(req, res) {
   res.render('posts/new');
 });
 
-// app.post('/articles', function(req, res) {
-//   console.log(req.body.article);
-//   articles.push(req.body.article);
-//   res.redirect('/articles');
-// });
+app.post('/blog', function(req, res) {
+  console.log('this is the req.body');
+  var username = req.body.author.username;
+  var title = req.body.post.title;
+  var content = req.body.post.content;
+
+  db.author.findOrCreate({username: username}).success(function(author) {
+    db.post.create({title: title, content: content, authorId: author.id}).success(function(post) {
+      res.redirect('/blog');
+    });
+  });
+});
 
 
 app.listen(3000, function() {
