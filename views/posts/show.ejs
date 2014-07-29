@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Template</title>
+    <body>
+      <h1>Posts by: <%= author.username %></h1>
+      <% posts.forEach(function(post) { %>
+        <article>
+          <h2><%= post.dataValues.title %></h2>
+          <p><%= post.dataValues.content %></p>
+        </article>
+      <% }) %>
+    </body>
+  </head>
+</html>
