@@ -16,19 +16,25 @@ app.get('/blog', function(req, res) {
   });
 });
 
+app.get('/post/new', function(req, res) {
+  res.render('posts/new');
+});
+
+app.get('/post/:id', function(req, res) {
+  var postId = req.params.id;
+  db.post.find(postId).success(function(foundPost) {
+    res.render('posts/view', {post: foundPost});
+  });
+});
+
 app.get('/user/:id', function(req, res) {
   var userId = req.params.id;
   db.author.find(userId).success(function(author) {
-    console.log(author);
     author.getPosts().success(function(associatedPosts) {
       console.log(associatedPosts);
       res.render('posts/show', {posts: associatedPosts, author: author});
     });
   });
-});
-
-app.get('/blog/new', function(req, res) {
-  res.render('posts/new');
 });
 
 app.post('/blog', function(req, res) {

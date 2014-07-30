@@ -23,17 +23,10 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
+
 db.author.hasMany(db.post);
 db.post.belongsTo(db.author);
 
-// db.author.create({username: 'cameronjacoby'}).success(function(author) {
-//   console.log(author);
-// });
-
-// db.post.create({title: 'First Post', content: 'This is the first blog post.', 
-//   authorId: 1}).success(function(post) {
-//     console.log(post);
-// });
 
 module.exports = lodash.extend({
   sequelize: sequelize,
