@@ -24,7 +24,6 @@ Object.keys(db).forEach(function(modelName) {
 })
 
 
-db.author.hasMany(db.post);
 db.post.belongsTo(db.author);
 
 
