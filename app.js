@@ -17,7 +17,7 @@ app.get('/blog', function(req, res) {
 });
 
 app.get('/user/:id', function(req, res) {
-  var userId = req.params.id;  
+  var userId = req.params.id;
   db.author.find(userId).success(function(author) {
     console.log(author);
     author.getPosts().success(function(associatedPosts) {

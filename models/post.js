@@ -1,9 +1,12 @@
 function Post(sequelize, DataTypes){
   return sequelize.define('post', {
     title: DataTypes.STRING,
-    content: DataTypes.TEXT
-    // add foreign key
+    content: DataTypes.TEXT,
+    authorId: {
+      type: DataTypes.INTEGER,
+      foreignKey: true
+    }
   });
-};
+}
 
 module.exports = Post;

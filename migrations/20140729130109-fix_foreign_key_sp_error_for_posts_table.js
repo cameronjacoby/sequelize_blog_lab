@@ -1,6 +1,7 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
     // add altering commands here, calling 'done' when finished
+    migration.removeColumn('posts', 'authorId');
     migration.addColumn(
       'posts',
       'authorId',
@@ -9,11 +10,11 @@ module.exports = {
         foreignKey: true
       }
     )
-    .complete(done)
+    .complete(done);
   },
   down: function(migration, DataTypes, done) {
     // add reverting commands here, calling 'done' when finished
     migration.removeColumn('posts', 'authorId')
-    .complete(done)
+    .complete(done);
   }
-}
+};
