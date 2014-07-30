@@ -1,5 +1,5 @@
 var express = require('express'),
-  db = require('./models/index.js'),
+  db = require('./models/index'),
   ejs = require('ejs'),
   bodyParser = require('body-parser'),
   app = express();
@@ -23,16 +23,18 @@ app.get('/post/new', function(req, res) {
 app.get('/post/:id', function(req, res) {
   var postId = req.params.id;
   db.post.find(postId).success(function(foundPost) {
-    res.render('posts/view', {post: foundPost});
+    res.render('posts/view_post', {post: foundPost});
   });
 });
 
 app.get('/user/:id', function(req, res) {
   var userId = req.params.id;
+  console.log('this is the user id');
+  console.log(userId);
   db.author.find(userId).success(function(author) {
     author.getPosts().success(function(associatedPosts) {
       console.log(associatedPosts);
-      res.render('posts/show', {posts: associatedPosts, author: author});
+      res.render('posts/posts_by_author', {posts: associatedPosts, author: author});
     });
   });
 });

@@ -15,15 +15,12 @@
           <li><a href="/post/new">New Post</a></li>
         </ul>
 
-        <h1>Blog Posts</h1>
-        <% posts.forEach(function(post) { %>
-          <article>
-            <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>
-            <p><%= post.content %></p>
-            <p><em><%= post.createdAt %></em></p>
-            <p>Post by: <a href="/user/<%= post.authorId %>">user <%= post.dataValues.authorId %></a></p>
-          </article>
-        <% }) %>
+        <article>
+          <h2><%= post.title %></h2>
+          <p><%= post.content %></p>
+          <p><em><%= post.createdAt %></em></p>
+          <p>Post by: <a href="/user/<%= post.authorId %>">user <%= post.authorId %></a></p>
+        </article>
       </div>
       <div class="col-xs-2 col-md-3"></div>
     </div>

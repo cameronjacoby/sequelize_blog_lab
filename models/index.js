@@ -23,9 +23,7 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
-
 db.post.belongsTo(db.author);
-
 
 module.exports = lodash.extend({
   sequelize: sequelize,
