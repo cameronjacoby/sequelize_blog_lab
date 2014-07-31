@@ -1,7 +1,7 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
     // add altering commands here, calling 'done' when finished
-    migration.createTable('posts',
+    migration.createTable('users',
       {id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -9,18 +9,21 @@ module.exports = {
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
-      title: DataTypes.STRING,
-      content: DataTypes.TEXT,
-      authorId: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
+      username: {
+        type: DataTypes.STRING,
+          unique: true,
+          allowNull: false
+        },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
     })
     .complete(done);
   },
   down: function(migration, DataTypes, done) {
     // add reverting commands here, calling 'done' when finished
-    migration.dropTable('posts')
+    migration.dropTable('users')
       .complete(done);
   }
 };

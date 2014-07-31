@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 // renders home page (shows all blog posts)
 app.get('/blog', function(req, res) {
   db.post.findAll().success(function(posts) {
-    res.render('site/index', {posts: posts, authorName: ''});
+    res.render('site/index', {posts: posts, username: ''});
   });
 });
 
@@ -33,13 +33,14 @@ app.get('/post/:id', function(req, res) {
 });
 
 
-// renders 'show posts by author' page
+// renders 'show posts by user' page
 app.get('/user/:id', function(req, res) {
   var userId = req.params.id;
-  db.author.find(userId).success(function(author) {
-    author.getPosts().success(function(associatedPosts) {
+  db.user.find(userId).success(function(user) {
+    console.log(userId);
+    user.getPosts().success(function(associatedPosts) {
       console.log(associatedPosts);
-      res.render('posts/posts_by_author', {posts: associatedPosts, author: author});
+      res.render('posts/posts_by_user', {posts: associatedPosts, user: user});
     });
   });
 });
@@ -59,13 +60,15 @@ app.get('/login', function(req, res) {
 
 // posts to homepage when new blog post is created
 app.post('/blog', function(req, res) {
-  var username = req.body.author.username;
+  var username = req.body.user.username;
   var title = req.body.post.title;
   var content = req.body.post.content;
 
-  db.author.findOrCreate({username: username}).success(function(author) {
-    db.post.create({title: title, content: content, authorId: author.id}).success(function(post) {
-      res.redirect('/blog');
+  db.user.findOrCreate({username: username, password: 'password'}).success(function(user) {
+    db.post.create({title: title, content: content}).success(function(newPost) {
+      user.addPost(newPost).success(function() {
+        res.redirect('/blog');
+      });
     });
   });
 });

@@ -10,11 +10,7 @@ module.exports = {
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
       title: DataTypes.STRING,
-      content: DataTypes.TEXT,
-      authorId: {
-        type: DataTypes.INTEGER,
-        foriegnKey: true // fix spelling (should be'foreign') with another migration
-      }
+      content: DataTypes.TEXT
     })
     .complete(done);
   },

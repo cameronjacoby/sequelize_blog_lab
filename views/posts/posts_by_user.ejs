@@ -15,7 +15,7 @@
           <li><a href="/post/new">New Post</a></li>
         </ul>
 
-        <h1>Posts by: <%= author.username %></h1>
+        <h1>Posts by: <%= user.username %></h1>
         <% posts.forEach(function(post) { %>
           <article>
             <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>

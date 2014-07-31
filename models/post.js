@@ -2,7 +2,7 @@ function Post(sequelize, DataTypes) {
   return sequelize.define('post', {
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    authorId: {
+    userId: {
       type: DataTypes.INTEGER,
       foreignKey: true
     }
