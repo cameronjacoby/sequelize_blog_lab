@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog Template</title>
-    <link rel="icon" href="/images/favicon.png" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
-  </head>
-  <body>
-    <div class="row">
-      <div class="col-xs-2 col-md-3"></div>
-      <div class="col-xs-8 col-md-6 center_column">
-        <ul class="nav nav-tabs" role="tablist">
-          <li><a href="/blog">Home</a></li>
-          <li><a href="/login">Log In</a></li>
-        </ul>
+<% include ../partials/header %>
 
-        <h1>Blog Posts</h1>
-        <% posts.forEach(function(post) { %>
-          <article>
-            <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>
-            <p><%= post.content %></p>
-            <p><em><%= post.createdAt %></em></p>
-            <p>Post by: <a href="/user/<%= post.userId %>">user <%= post.dataValues.userId %></a></p>
-          </article>
-        <% }) %>
-      </div>
-      <div class="col-xs-2 col-md-3"></div>
-    </div>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  <h1>Blog Posts</h1>
+  <% posts.forEach(function(post) { %>
+    <article>
+      <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>
+      <p><%= post.content %></p>
+      <p><em><%= post.createdAt %></em></p>
+      <p>Post by: <a href="/user/<%= post.userId %>">user <%= post.dataValues.userId %></a></p>
+    </article>
+  <% }) %>
+
+<% include ../partials/footer %>
