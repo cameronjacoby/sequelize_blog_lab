@@ -13,13 +13,13 @@ module.exports = {
       content: DataTypes.TEXT,
       authorId: {
         type: DataTypes.INTEGER,
-        foriegnKey: true // fix spelling (should be'foreign') with another migration
+        foreignKey: true
       }
     })
     .complete(done);
   },
   down: function(migration, DataTypes, done) {
-    // add reverting commands here, calling 'done' when finished 
+    // add reverting commands here, calling 'done' when finished
     migration.dropTable('posts')
       .complete(done);
   }
