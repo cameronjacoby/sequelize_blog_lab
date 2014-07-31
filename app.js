@@ -20,10 +20,10 @@ app.get('/blog', function(req, res) {
 });
 
 
-// renders 'add new post' page
-app.get('/post/new', function(req, res) {
-  res.render('posts/new');
-});
+// // renders 'add new post' page
+// app.get('/post/new', function(req, res) {
+//   res.render('posts/new');
+// });
 
 
 // renders 'view post' page
@@ -39,9 +39,7 @@ app.get('/post/:id', function(req, res) {
 app.get('/user/:id', function(req, res) {
   var userId = req.params.id;
   db.user.find(userId).success(function(user) {
-    console.log(userId);
     user.getPosts().success(function(associatedPosts) {
-      console.log(associatedPosts);
       res.render('posts/posts_by_user', {posts: associatedPosts, user: user});
     });
   });
@@ -76,7 +74,7 @@ app.post('/blog', function(req, res) {
 });
 
 
-// create new user upon sign up
+// sign up & render 'new post' page
 app.post('/signup', function(req, res) {
   newUsername = req.body.username;
   newPassword = req.body.password;
@@ -91,6 +89,7 @@ app.post('/signup', function(req, res) {
 });
 
 
+// log in & render 'new post' page
 app.post('/login', function(req, res) {
   enteredUsername = req.body.username;
   enteredPassword = req.body.password;
@@ -99,7 +98,7 @@ app.post('/login', function(req, res) {
       res.render('site/login', {message: err.message, username: enteredUsername});
     },
     function(success) {
-      res.render('posts/new', {message: 'Successfully signed in! Now you can add a new blog post.'});
+      res.render('posts/new', {message: 'Successfully signed in! You can now add a new blog post.'});
     }
   );
 });
