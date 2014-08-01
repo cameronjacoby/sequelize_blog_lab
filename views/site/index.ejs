@@ -6,7 +6,13 @@
       <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>
       <p><%= post.content %></p>
       <p><em><%= post.createdAt %></em></p>
-      <p>Post by: <a href="/user/<%= post.userId %>">user <%= post.dataValues.userId %></a></p>
+
+      <% users.forEach(function(user) { %>
+        <% if (post.userId === user.id) { %>
+          <p>Post by: <a href="/user/<%= post.userId %>"><%= user.username %></a></p>
+        <% } %>
+      <% }) %>
+
     </article>
   <% }) %>
 

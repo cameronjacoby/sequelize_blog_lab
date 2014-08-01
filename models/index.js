@@ -23,8 +23,8 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-db.user.hasMany(db.post);
-db.post.belongsTo(db.user);
+db.user.hasMany(db.post, {foreignKey: 'userId'});
+db.post.belongsTo(db.user, {foreignKey: 'userId'});
 
 module.exports = lodash.extend({
   sequelize: sequelize,

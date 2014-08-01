@@ -14,13 +14,16 @@ app.use(express.static(__dirname + '/public'));
 
 // renders home page (shows all blog posts)
 app.get('/blog', function(req, res) {
+  var entries = {};
   db.post.findAll().success(function(posts) {
-    res.render('site/index', {posts: posts});
+    db.user.findAll().success(function(users) {
+      res.render('site/index', {posts: posts, users: users});
+    });
   });
 });
 
 
-// // renders 'add new post' page
+// // renders 'new post' page
 // app.get('/post/new', function(req, res) {
 //   res.render('posts/new');
 // });
@@ -30,7 +33,9 @@ app.get('/blog', function(req, res) {
 app.get('/post/:id', function(req, res) {
   var postId = req.params.id;
   db.post.find(postId).success(function(foundPost) {
-    res.render('posts/view_post', {post: foundPost});
+    db.user.find(foundPost.userId).success(function(foundUser) {
+      res.render('posts/view_post', {post: foundPost, user: foundUser.dataValues});
+    });
   });
 });
 
@@ -63,7 +68,6 @@ app.post('/blog', function(req, res) {
   var username = req.body.user.username;
   var title = req.body.post.title;
   var content = req.body.post.content;
-
   db.user.find({where: {username: username}}).success(function(user) {
     db.post.create({title: title, content: content}).success(function(newPost) {
       user.addPost(newPost).success(function() {

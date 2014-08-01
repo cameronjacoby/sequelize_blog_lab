@@ -4,7 +4,7 @@
     <h2><%= post.title %></h2>
     <p><%= post.content %></p>
     <p><em><%= post.createdAt %></em></p>
-    <p>Post by: <a href="/user/<%= post.userId %>">user <%= post.userId %></a></p>
+    <p>Post by: <a href="/user/<%= post.userId %>"><%= user.username %></a></p>
   </article>
 
 <% include ../partials/footer %>
