@@ -13,6 +13,33 @@ In this lab we will be making a simple blog platform. In many ways this app will
 2. Start coding your `models` file. This will include setting up `Sequelize` dependencies.
 3. Create the model `Author` and relationship `Posts` that will be talking to each other.
 
-
 ##Bonus
 * Feel free to add `edit` and `delete` functionality.
+
+--------------------
+
+### Completed project:
+
+#### Blog Posts
+
+![ScreenShot](/public/images/screenshot_blog.png)
+
+#### Post Details
+
+![ScreenShot](/public/images/screenshot_post.png)
+
+#### Posts by User
+
+![ScreenShot](/public/images/screenshot_posts_by_user.png)
+
+#### Sign Up Page
+
+![ScreenShot](/public/images/screenshot_signup.png)
+
+#### Log In page
+
+![ScreenShot](/public/images/screenshot_login.png)
+
+#### Add New Post
+
+![ScreenShot](/public/images/screenshot_new.png)

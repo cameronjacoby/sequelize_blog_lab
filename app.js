@@ -23,12 +23,6 @@ app.get('/blog', function(req, res) {
 });
 
 
-// // renders 'new post' page
-// app.get('/post/new', function(req, res) {
-//   res.render('posts/new');
-// });
-
-
 // renders 'view post' page
 app.get('/post/:id', function(req, res) {
   var postId = req.params.id;
@@ -111,7 +105,3 @@ app.post('/login', function(req, res) {
 app.listen(3000, function() {
   console.log('server started on localhost:3000');
 });
-
-
-
-
