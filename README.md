@@ -36,7 +36,7 @@ In this lab we will be making a simple blog platform. In many ways this app will
 
 ![ScreenShot](/public/images/screenshot_signup.png)
 
-#### Log In page
+#### Log In Page
 
 ![ScreenShot](/public/images/screenshot_login.png)
 
